@@ -3,12 +3,16 @@
 * build Delaunay triangulation incrementally
 * 
 * inspired by: https://github.com/jbegaint/delaunay-cpp
+* 
+* Geometry.hpp
+* classes with regard to point / edge / circle / triangle in 2D Euclidean space
 */
 
 #pragma once
 
 // header files
 #include <iostream>
+#include <cmath>
 #include <vector>
 
 // everything goes into delaunay namespace
@@ -73,9 +77,15 @@ namespace Geometry {
 
 		/* compare if the two points are in the same location */
 		bool operator==(const Point_2<T>& rhs)const {
-			return ((abs(m_x - rhs.x()) < epsilon) &&
-				    (abs(m_y - rhs.y()) < epsilon));
+			return ((std::abs(m_x - rhs.x()) < epsilon) &&
+				    (std::abs(m_y - rhs.y()) < epsilon));
 		} // this function can be declared as `const` since both const and non-const objects can access it
+
+
+		/* calculate the distance between the two points */
+		double distance(const Point_2<T>& rhs)const {
+			return std::sqrt((rhs.x() - m_x) * (rhs.x() - m_x) + (rhs.y() - m_y) * (rhs.y() - m_y));
+		}
 
 
 		/* ostream overloading, for printing the info of the Point_2<T> objects */
@@ -198,6 +208,19 @@ namespace Geometry {
 		/* the class members should not be directly accessed outside the class */
 	};
 
+
+
+	/*
+	* Triangle_2 class - store the 2D triangle
+	* use template
+	*/
+	template <typename>
+	class Triangle_2 {
+	public:
+
+	protected:
+
+	};
 
 
 

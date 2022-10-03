@@ -9,7 +9,7 @@ set (CMAKE_CXX_STANDARD 11)
 add_subdirectory("glfw")
 add_subdirectory("glew")
 
-add_executable (DeT  "src/DeT.hpp" "src/main.cpp")
+add_executable (DeT  "src/Geometry.hpp" "src/main.cpp")
 
 #specify include directories
 target_include_directories(DeT PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/glfw/include)

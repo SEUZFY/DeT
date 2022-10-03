@@ -2,7 +2,7 @@
 #include <sstream>
 #include <fstream>
 
-#include "DeT.hpp"
+#include "Geometry.hpp"
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h" // mind the orders, include glew.h first and include glfw3.h next -> to use newest OpenGL functions
@@ -12,10 +12,11 @@ using namespace Geometry;
 int main()
 {
     Point_2<double> p(1.0, 1.0);
-    Point_2<double> q(1.0, 1.0 + 1e-5);
+    Point_2<double> q(1.0, 2.0);
     std::cout << p << std::endl;
     p.y() = 1.0 + 1e-5;
     std::cout << (p == q) << std::endl;
+    std::cout << "distance: " << p.distance(q) << std::endl;
 
     // construct edges
     Point_2<double> p0(1.0, 1.0);
