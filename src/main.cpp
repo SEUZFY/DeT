@@ -14,34 +14,22 @@ int main()
     Point_2<double> p(1.0, 1.0);
     Point_2<double> q(1.0, 2.0);
     std::cout << p << std::endl;
-    p.y() = 1.0 + 1e-5;
+    //p.y() = 1.0 + 1e-5;
     std::cout << (p == q) << std::endl;
     std::cout << "distance: " << p.distance(q) << std::endl;
 
+    Point_2<double> a(1.0, 1.0);
+    Point_2<double> b(1.0, 2.0);
+
+    Point_2<double> c(1.0, 1.0);
+    Point_2<double> d(1.0, 2.0);
+
     // construct edges
-    Point_2<double> p0(1.0, 1.0);
-    Point_2<double> p1(1.0, 2.0);
-
-    Edge_2<double> e0;
-    Edge_2<double> e1(p0, p1);
-
-    Point_2<double> p2(1.0, 2.0);
-    Point_2<double> p3(1.0, 1.0);
-    Edge_2<double> e2(p2, p3);
-
-    std::cout << "edges\n";
-    std::cout << e0 << std::endl;
-    std::cout << e1 << std::endl;
-    std::cout << e2 << std::endl;
-
-    std::cout << (e1 == e2) << std::endl;
-
-    Point_2<double> e1_p0 = e1.p0();
-    std::cout << e1_p0 << std::endl;
-
-    // construct circle
-    Circle_2<double> c1(1.0, 1.0, 1.0);
-    std::cout << c1 << std::endl;
+    Edge_2<double> e1(&a, &b);
+    Edge_2<double> e2(&c, &d);
+    std::cout << "edge 1: " << e1 << std::endl;
+    std::cout << "edge 2: " << e2 << std::endl;
+    std::cout << "same edge? " << (e1 == e2) << std::endl;
     
 
     return EXIT_SUCCESS;

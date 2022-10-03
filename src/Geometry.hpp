@@ -57,12 +57,12 @@ namespace Geometry {
 		Point_2() : 
 			m_x(T(0)), m_y(T(0)) {} /* default constructor */
 		
-		Point_2(T px, T py) : 
-			m_x(px), m_y(py){} /* constructor with @param */
+		Point_2(T x, T y) : 
+			m_x(x), m_y(y){} /* constructor with @param */
 
 		template <typename U> /* if the constructor gets different @param types */
-		Point_2(T px, T py) : 
-			m_x(static_cast<T>(px)), m_y(static_cast<T>(py)){}
+		Point_2(T x, T y) : 
+			m_x(static_cast<T>(x)), m_y(static_cast<T>(y)){}
 
 
 		/* get the x coordinate */
@@ -85,7 +85,7 @@ namespace Geometry {
 		/* calculate the distance between the two points */
 		double distance(const Point_2<T>& rhs)const {
 			return std::sqrt((rhs.x() - m_x) * (rhs.x() - m_x) + (rhs.y() - m_y) * (rhs.y() - m_y));
-		}
+		} // use std::sqrt() to avoid possible overloading of sqrt() function
 
 
 		/* ostream overloading, for printing the info of the Point_2<T> objects */
@@ -111,53 +111,66 @@ namespace Geometry {
 	template <typename T>
 	class Edge_2 {
 
-		/* use point for Point_2<T>, can not use typedef for template */
-		using point = Point_2<T>; // C++ 11
-
 	public:
 
 		/* constructors */
-		Edge_2() : m_p0(point()), m_p1(point()){}
+		Edge_2() : ptr0(nullptr), ptr1(nullptr){}
 
-		Edge_2(const point& p0, const point& p1):
-			m_p0(p0), m_p1(p1){}
+		Edge_2(Point_2<T>* p0, Point_2<T>* p1) {
+			if (p0 != nullptr && p1 != nullptr) {
+				ptr0 = p0;
+				ptr1 = p1;
+			}
+			else {
+				ptr0 = nullptr;
+				ptr1 = nullptr;
+			}
+		}
 
 		Edge_2(const Edge_2<T>& rhs) {
-			m_p0 = rhs.m_p0;
-			m_p1 = rhs.m_p1;
+			ptr0 = rhs.ptr0;
+			ptr1 = rhs.ptr1;
 		}
 
 
-		/* get point p0 */
-		point& p0() { return m_p0; }
-		const point& p0()const { return m_p0; }
+		/* get the pointer of point p0 */
+		Point_2<T>* p0() { return ptr0; }
+		const Point_2<T>* p0()const { return ptr0; }
 
 
 		/* get point p1 */
-		point& p1() { return m_p1; }
-		const point& p1()const { return m_p1; }
+		Point_2<T>* p1() { return ptr1; }
+		const Point_2<T>* p1()const { return ptr1; }
 
 
-		/* if two edges are in the same location */
+		/* if two edges are in the same location or if two identical edges */
 		bool operator==(const Edge_2<T>& rhs) const{
-			return ((m_p0 == rhs.p0() && m_p1 == rhs.p1()) ||
-					(m_p0 == rhs.p1() && m_p1 == rhs.p0()));
+			Point_2<T>& lhs_p0 = *ptr0;
+			Point_2<T>& lhs_p1 = *ptr1;
+
+			Point_2<T>& rhs_p0 = *(rhs.ptr0);
+			Point_2<T>& rhs_p1 = *(rhs.ptr1);
+
+			return ((lhs_p0 == rhs_p0 && lhs_p1 == rhs_p1) ||
+					(lhs_p0 == rhs_p1 && lhs_p1 == rhs_p0));
 		}
 
 
 		/* ostream overloading */
 		friend std::ostream& operator<<(std::ostream& os, const Edge_2<T>& e)
 		{
-			os << "p0: " << e.p0() << ", " << "p1: " << e.p1();
+			os << "p0:" << *(e.p0()) << " " << "p1:" << *(e.p1());
 			return os;
 		}
 
 
 	protected:
-		point m_p0;
-		point m_p1;
+		Point_2<T>* ptr0;
+		Point_2<T>* ptr1;
 
-		/* m_p0 and m_p1 should not be modified directly outside the class */
+		/* store the pointers pointing at Point_2<T> instances instead of sotring instances */
+
+		/* ptr_p0 and ptr_p1 should not be modified directly outside the class */
 	};
 
 
