@@ -2,6 +2,8 @@
 
 Delaunay triangulation and visualised using `OpenGL`.
 
+The algorithm is so called `Bowyer-Watson' algorithm, see [here](http://paulbourke.net/papers/triangulate/) for more details.
+
 Under construction.
 
 The code and set up is heavily inspired by:

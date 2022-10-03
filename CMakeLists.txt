@@ -6,7 +6,7 @@ project ("DeT")
 add_subdirectory("glfw")
 add_subdirectory("glew")
 
-add_executable (DeT "src/DeT.cpp" "src/DeT.h")
+add_executable (DeT  "src/DeT.hpp" "src/main.cpp")
 
 #specify include directories
 target_include_directories(DeT PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/glfw/include)

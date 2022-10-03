@@ -1,9 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
 
-#include "DeT.h"
+#include "DeT.hpp"
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h" // mind the orders, include glew.h first and include glfw3.h next -> to use newest OpenGL functions
@@ -11,7 +11,7 @@
 using namespace std;
 
 int main()
-{	
+{
     /* Initialize the window pointer with nullptr */
     GLFWwindow* window(nullptr);
 
