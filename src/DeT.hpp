@@ -31,6 +31,12 @@ namespace Geometry {
 	template <typename T>
 	class Edge_2; // store all the 2D edges
 
+	template <typename T>
+	class Circle_2; // circle in 2D Euclidean space, mainly for the circumcircle of a triangle
+
+	template <typename T>
+	class Triangle_2; // triangle in 2D Euclidean space, formed by Point_2<T> and Edge_2<T>
+
 	/*--------------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -146,7 +152,57 @@ namespace Geometry {
 
 
 
-} // end of namespace delaunay
+	/*
+	* Circle_2 class - store the 2D circle
+	* use template
+	*/
+	template <typename T>
+	class Circle_2 {
+	public:
+
+		/* constructors */
+		Circle_2(): m_x(T(0)), m_y(T(0)), m_radius(T(0)){}
+
+		Circle_2(T x, T y, T radius) :
+			m_x(x), m_y(y), m_radius(radius) {}
+
+
+		/* get the coordinate of the center */
+		T& x() { return m_x; }
+		const T& x()const { return m_x; }
+		T& y() { return m_y; }
+		const T& y()const { return m_y; }
+
+
+		/* get the radius */
+		T& radius() { return m_radius; }
+		const T& radius()const { return m_radius; }
+
+
+		/* point in circle test? */
+
+
+		/* ostream overloading */
+		friend std::ostream& operator<<(std::ostream& os, const Circle_2<T>& c)
+		{
+			os << "center: " << "(" << c.x() << ", " << c.y() << ")" << " " << "radius: " << c.radius();
+			return os;
+		}
+
+
+	protected:
+		T m_x; // x coordinate of the center
+		T m_y; // y coordinate of the center
+		T m_radius; // radius of the circle
+
+		/* the class members should not be directly accessed outside the class */
+	};
+
+
+
+
+
+} // end of namespace Geometry
 
 
 

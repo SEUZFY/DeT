@@ -37,6 +37,10 @@ int main()
 
     Point_2<double> e1_p0 = e1.p0();
     std::cout << e1_p0 << std::endl;
+
+    // construct circle
+    Circle_2<double> c1(1.0, 1.0, 1.0);
+    std::cout << c1 << std::endl;
     
 
     return EXIT_SUCCESS;
