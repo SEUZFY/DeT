@@ -1,6 +1,4 @@
-﻿// DeT.cpp: 定义应用程序的入口点。
-
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -8,7 +6,7 @@
 #include "DeT.h"
 
 #include "GL/glew.h"
-#include "GLFW/glfw3.h" // mind the orders, include glew.h first and include glfw3.h next
+#include "GLFW/glfw3.h" // mind the orders, include glew.h first and include glfw3.h next -> to use newest OpenGL functions
 
 using namespace std;
 
