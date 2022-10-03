@@ -27,6 +27,6 @@ with some improvements.
 - Use pointers as the members of edge class to improve the efficiency (especially for storage, i.e. won't store the same point twice, store
 its pointers instead).
 
-- add collinear check before calculating the circumcircle of a triangle.
+- Add `collinear check` before calculating the circumcircle of a triangle.
 
 	
