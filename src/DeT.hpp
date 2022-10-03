@@ -12,7 +12,7 @@
 #include <vector>
 
 // everything goes into delaunay namespace
-namespace Delaunay {
+namespace Geometry {
 
 
 
@@ -46,6 +46,7 @@ namespace Delaunay {
 		/* constructors */
 		Point_2() : 
 			m_x(T(0)), m_y(T(0)) {} /* default constructor */
+		
 		Point_2(T px, T py) : 
 			m_x(px), m_y(py){} /* constructor with @param */
 
@@ -66,14 +67,8 @@ namespace Delaunay {
 
 		/* compare if the two points are in the same location */
 		bool operator==(const Point_2<T>& rhs)const {
-			if (abs(m_x - rhs.x()) < epsilon &&
-				abs(m_y - rhs.y()) < epsilon) {
-				return true;
-			}
-			else {
-				return false;
-			}
-
+			return ((abs(m_x - rhs.x()) < epsilon) &&
+				    (abs(m_y - rhs.y()) < epsilon));
 		} // this function can be declared as `const` since both const and non-const objects can access it
 
 
@@ -99,10 +94,54 @@ namespace Delaunay {
 	*/
 	template <typename T>
 	class Edge_2 {
+
+		/* use point for Point_2<T>, can not use typedef for template */
+		using point = Point_2<T>; // C++ 11
+
 	public:
 
-	protected:
+		/* constructors */
+		Edge_2() : m_p0(point()), m_p1(point()){}
 
+		Edge_2(const point& p0, const point& p1):
+			m_p0(p0), m_p1(p1){}
+
+		Edge_2(const Edge_2<T>& rhs) {
+			m_p0 = rhs.m_p0;
+			m_p1 = rhs.m_p1;
+		}
+
+
+		/* get point p0 */
+		point& p0() { return m_p0; }
+		const point& p0()const { return m_p0; }
+
+
+		/* get point p1 */
+		point& p1() { return m_p1; }
+		const point& p1()const { return m_p1; }
+
+
+		/* if two edges are in the same location */
+		bool operator==(const Edge_2<T>& rhs) const{
+			return ((m_p0 == rhs.p0() && m_p1 == rhs.p1()) ||
+					(m_p0 == rhs.p1() && m_p1 == rhs.p0()));
+		}
+
+
+		/* ostream overloading */
+		friend std::ostream& operator<<(std::ostream& os, const Edge_2<T>& e)
+		{
+			os << "p0: " << e.p0() << ", " << "p1: " << e.p1();
+			return os;
+		}
+
+
+	protected:
+		point m_p0;
+		point m_p1;
+
+		/* m_p0 and m_p1 should not be modified directly outside the class */
 	};
 
 
