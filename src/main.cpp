@@ -10,8 +10,8 @@
 
 int main()
 {
-    delaunay::Point_2<double> p(1.0, 1.0);
-    delaunay::Point_2<double> q(1.0, 1.0 + 1e-5);
+    Delaunay::Point_2<double> p(1.0, 1.0);
+    Delaunay::Point_2<double> q(1.0, 1.0 + 1e-5);
     std::cout << p << std::endl;
     p.y() = 1.0 + 1e-5;
     std::cout << (p == q) << std::endl;

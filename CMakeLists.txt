@@ -2,6 +2,9 @@
 
 project ("DeT")
 
+#set C++ standard
+set (CMAKE_CXX_STANDARD 11)
+
 #include subprojects
 add_subdirectory("glfw")
 add_subdirectory("glew")

@@ -12,7 +12,7 @@
 #include <vector>
 
 // everything goes into delaunay namespace
-namespace delaunay {
+namespace Delaunay {
 
 
 
@@ -91,6 +91,19 @@ namespace delaunay {
 		/* x and y should not be modified directly outside the class */
 	};
 
+
+
+	/*
+	* Edge_2 class - store the 2D edges
+	* use template
+	*/
+	template <typename T>
+	class Edge_2 {
+	public:
+
+	protected:
+
+	};
 
 
 
