@@ -29,4 +29,8 @@ its pointers instead).
 
 - Add `collinear check` before calculating the circumcircle of a triangle.
 
+- Use `std::list<T>` to store the triangles? - since `std::list<T>` supports constant time insertion and removal of elements from anywhere in the container.
+Details: [std::list](https://en.cppreference.com/w/cpp/container/list).
+
+
 	
