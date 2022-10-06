@@ -12,6 +12,12 @@ The OpenGL example code and environment set up is heavily inspired by:
 
 1. environment set up
 	[ OpenGL graphics in C++ from scratch [CMake + GLFW + GLEW] ](https://www.youtube.com/watch?v=Nzp77cOMmfg)
+	
+	get glfw - `git submodule add https://github.com/glfw/glfw`
+	
+	get glew - `git submodule add https://github.com/Perlmint/glew-cmake glew`
+	
+	and refer to `CMakeLists.txt` file to configure the submodules
 
 2. OpenGL example code(to draw an example triangle)
 	[Setting up OpenGL and Creating a Window in C++](https://www.youtube.com/watch?v=OR4fNpBjmq8)
