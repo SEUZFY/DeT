@@ -61,7 +61,7 @@ namespace Geometry {
 			m_x(x), m_y(y){} /* constructor with @param */
 
 		template <typename U> /* if the constructor gets different @param types */
-		Point_2(T x, T y) : 
+		Point_2(U x, U y) : 
 			m_x(static_cast<T>(x)), m_y(static_cast<T>(y)){}
 
 
